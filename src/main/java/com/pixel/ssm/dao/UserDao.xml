@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pixel.ssm.dao.UserDao">
+
+    <select id="getUser" parameterType="com.pixel.ssm.model.User"
+            resultType="com.pixel.ssm.model.User">
+        SELECT * FROM user_info WHERE username=#{username} AND password=#{password}
+    </select>
+
+    <insert id="addUser" parameterType="com.pixel.ssm.model.User" flushCache="true">
+        INSERT INTO user_info (_id,username,password,age) VALUES (#{_id},#{username},#{password},#{age})
+    </insert>
+
+    <update id="updateUser" parameterType="com.pixel.ssm.model.User">
+        UPDATE user_info SET password=#{password} WHERE id=#{_id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM user_info WHERE id=#{_id}
+    </delete>
+
+</mapper>
